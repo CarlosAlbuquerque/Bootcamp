@@ -17,16 +17,28 @@ module.exports = {
         rules: [
             // loader para conversão do js, babel
             {
-                // test é a primeira propriedade obrigatoria
-                // vamos passar uma expressão regular que identifica arquivos que terminam com js
                 test: /\.js$/,
-                // estamos excluindo o node_modules da conversão
                 exclude: /node_modules/,
-                // passando com loader iremos usar para a conversão
                 use:{
                     loader: 'babel-loader',
                 }
-            }
+            },
+            // loader para conversão do css
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: [
+                    { loader: 'style-loader' },
+                    { loader: 'css-loader' },
+                ]
+            },
+            // loader para conversão do imgs
+            {
+                test: /.*\.(gif)|(png)|(jpe?g)$/i,
+                use: {
+                    loader: 'file-loader',
+                }
+            },
         ]
     }
 }
