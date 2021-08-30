@@ -34,7 +34,7 @@ usersRouter.post('/', async (request, response) => {
 
     return response.json(userWithoutPassword);
   } catch (err) {
-    return response.status(400).json({ error: err.message });
+    return response.status(err.statusCode).json({ error: err.message });
   }
 });
 
@@ -63,7 +63,7 @@ usersRouter.patch(
 
       return response.json(userWithoutPassword);
     } catch (err) {
-      return response.status(400).json({ error: err.message });
+      return response.status(err.statusCode).json({ error: err.message });
     }
   },
 );
