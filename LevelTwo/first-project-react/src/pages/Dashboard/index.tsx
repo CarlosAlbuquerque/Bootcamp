@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
 /* eslint-disable react/jsx-no-bind */
-// eslint-disable-next-line no-use-before-define
 import React, { useState, useEffect, FormEvent } from 'react';
 import { FiChevronRight } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import api from '../../services/api';
 
 import logoImg from '../../assets/githubExplorer.svg';
@@ -76,10 +76,9 @@ const Dashboard: React.FC = () => {
 
       <Repositories>
         {repositories.map((repository) => (
-          <a
+          <Link
             key={repository.full_name}
-            target="_blank"
-            href={`https://github.com/${repository.full_name}`}
+            to={`/repositories/${repository.full_name}`}
             rel="noreferrer"
           >
             <img
@@ -91,7 +90,7 @@ const Dashboard: React.FC = () => {
               <p>{repository.description}</p>
             </div>
             <FiChevronRight size={20} />
-          </a>
+          </Link>
         ))}
       </Repositories>
     </>
